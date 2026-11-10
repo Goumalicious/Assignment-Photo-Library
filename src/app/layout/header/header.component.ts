@@ -11,8 +11,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-
-    protected readonly links = [
+  protected readonly links = [
     { path: '/', label: 'Photos' },
     { path: '/favorites', label: 'Favorites' },
   ];

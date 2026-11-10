@@ -1,0 +1,9 @@
+<ul class="grid">
+  @for (photo of photos(); track photo.id) {
+    <li>
+      <button type="button" class="tile" (click)="photoSelected.emit(photo)">
+        <app-photo-card [photo]="photo" [favorite]="favoriteIds().has(photo.id)" />
+      </button>
+    </li>
+  }
+</ul>

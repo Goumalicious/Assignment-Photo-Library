@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  justify-content: center;
+  padding-block: 24px;
+}
+
+.loader {
+  display: grid;
+  place-items: center;
+
+  > * {
+    grid-area: 1 / 1;
+  }
+}
+
+.label {
+  font: var(--mat-sys-label-medium);
+  color: var(--mat-sys-on-surface-variant);
+}

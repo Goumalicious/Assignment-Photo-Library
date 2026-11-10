@@ -1,0 +1,21 @@
+<div class="card" [class.loaded]="status() === 'loaded'">
+  @if (status() === 'error') {
+    <div class="fallback">
+      <mat-icon>broken_image</mat-icon>
+      <span>Image unavailable</span>
+    </div>
+  } @else {
+    <img
+      [src]="photo().thumbnailUrl"
+      alt="Photo {{ photo().id }}"
+      loading="lazy"
+      decoding="async"
+      (load)="status.set('loaded')"
+      (error)="status.set('error')"
+    />
+  }
+
+  @if (favorite()) {
+    <mat-icon class="badge">favorite</mat-icon>
+  }
+</div>

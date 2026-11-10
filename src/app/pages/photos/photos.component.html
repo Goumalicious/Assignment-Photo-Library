@@ -1,1 +1,5 @@
-<p>photos works!</p>
+@if (firstPage(); as page) {
+  <app-photo-grid [photos]="page.items" />
+} @else {
+  <app-loader />
+}

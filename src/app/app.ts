@@ -9,5 +9,4 @@ import { HeaderComponent } from './layout/header/header.component';
   templateUrl: './app.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
-}
+export class App {}

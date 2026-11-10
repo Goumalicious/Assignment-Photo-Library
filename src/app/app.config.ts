@@ -3,6 +3,7 @@ import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from 
 import { routes } from './app.routes';
 import { environment } from '../environments/environment';
 import { providePhotosApi } from './core/config/photos-api-config';
+import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +14,6 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
     ),
     providePhotosApi(environment.photosApi),
+    { provide: MAT_ICON_DEFAULT_OPTIONS, useValue: { fontSet: 'material-symbols-outlined' } },
   ],
 };
