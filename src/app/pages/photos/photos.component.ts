@@ -1,20 +1,31 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { PhotoGridComponent } from '../../shared/components/photo-grid/photo-grid.component';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { PHOTOS_API_CONFIG } from '../../core/config/photos-api-config';
-import { PhotoApiService } from '../../core/services/photo-api.service';
+import { PhotoStreamService } from '../../core/services/photo-stream.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Photo } from '../../core/models/photo';
+import { FavoritesService } from '../../core/services/favorites.service';
+import { MatButton } from '@angular/material/button';
+import { InfiniteScrollDirective } from '../../shared/directives/infinite-scroll.directive';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
-  imports: [PhotoGridComponent, LoaderComponent],
+  imports: [PhotoGridComponent, LoaderComponent, InfiniteScrollDirective, MatButton],
   selector: 'app-photos',
   styleUrl: './photos.component.scss',
   templateUrl: './photos.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotosComponent {
-  private readonly api = inject(PhotoApiService);
-  private readonly pageSize = inject(PHOTOS_API_CONFIG).pageSize;
+  protected readonly photoStream = inject(PhotoStreamService);
+  protected readonly favorites = inject(FavoritesService);
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly breakpoints = inject(BreakpointObserver);
 
-  protected readonly firstPage = toSignal(this.api.getPhotos({ page: 1, limit: this.pageSize }));
+  protected addToFavorites(photo: Photo): void {
+    const added = this.favorites.add(photo);
+    const message = added ? 'Added to favorites' : 'Already in your favorites';
+    const isMobile = this.breakpoints.isMatched(Breakpoints.Handset);
+    this.snackBar.open(message, undefined, { duration: 2000, horizontalPosition: 'end', verticalPosition: isMobile ? 'bottom' : 'top' });
+  }
 }

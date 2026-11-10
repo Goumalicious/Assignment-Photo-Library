@@ -1,5 +1,24 @@
-@if (firstPage(); as page) {
-  <app-photo-grid [photos]="page.items" />
-} @else {
+<app-photo-grid
+  [photos]="photoStream.photos()"
+  [favoriteIds]="favorites.favoriteIds()"
+  (photoSelected)="addToFavorites($event)"
+/>
+
+@if (photoStream.loading()) {
   <app-loader />
 }
+
+@if (photoStream.error()) {
+  <div class="error" role="alert">
+    <p>Could not load more photos.</p>
+    <button matButton="outlined" type="button" (click)="photoStream.loadNextPage()">
+      Try again
+    </button>
+  </div>
+}
+
+<div
+  appInfiniteScroll
+  [disabled]="photoStream.loading() || photoStream.error() || !photoStream.hasMore()"
+  (scrolled)="photoStream.loadNextPage()"
+></div>

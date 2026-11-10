@@ -9,7 +9,7 @@ export class FavoritesService {
   private readonly localStorage = inject(LocalStorageService);
   private readonly favoritesSignal = signal<Photo[]>(this.load());
   readonly favorites = this.favoritesSignal.asReadonly();
-  private readonly favoriteIds = computed(() => new Set(this.favoritesSignal().map((p) => p.id)));
+  readonly favoriteIds = computed(() => new Set(this.favoritesSignal().map((p) => p.id)));
 
   isFavorite(id: string): boolean {
     return this.favoriteIds().has(id);
