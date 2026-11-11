@@ -1,59 +1,27 @@
-# PhotoLibraryExercise
+# Photo Library
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.6.
+An Angular app with an infinite, random photo stream and a Favorites library saved in the browser.
 
-## Development server
+- **Photos** (`/`): An endless 3-column grid of random photos. Scroll to load more and click a photo to add it to your favorites.
+- **Favorites** (`/favorites`): The photos you saved as favourites. Click one to open it.
+- **Single photo** (`/photos/:id`): the photo in large size, with **Remove from favorites** button.
 
-To start a local development server, run:
+Favorites are stored in `localStorage`. There is no backend.
 
-```bash
-ng serve
-```
+## Installation steps
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Requires Node.js 22.22+, 24.15+ or 26+.
 
-## Code scaffolding
+- Download the code / Clone the repository into your pc
+- Install the dependencies `npm install`
+- Start the app `npm start` and open **http://localhost:4200** in your browser to view the app
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+If you want to run the tests, use this command: `npm test --watch=false`
 
-```bash
-ng generate component component-name
-```
+## Tech stack
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular 22: standalone components, signals, zoneless change detection, OnPush everywhere
+- Angular Material 3: toolbar, buttons, icons, progress spinner, snackbar, with a custom theme
+- SCSS, RxJS, Vitest
+- Photos from Lorem Picsum (https://picsum.photos)
+- Vitest for generating unit tests
