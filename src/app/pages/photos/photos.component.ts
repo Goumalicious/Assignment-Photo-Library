@@ -26,6 +26,10 @@ export class PhotosComponent {
     const added = this.favorites.add(photo);
     const message = added ? 'Added to favorites' : 'Already in your favorites';
     const isMobile = this.breakpoints.isMatched(Breakpoints.Handset);
-    this.snackBar.open(message, undefined, { duration: 2000, horizontalPosition: 'end', verticalPosition: isMobile ? 'bottom' : 'top' });
+    this.snackBar.open(message, undefined, {
+      duration: 2000,
+      horizontalPosition: 'end',
+      verticalPosition: isMobile ? 'bottom' : 'top',
+    });
   }
 }

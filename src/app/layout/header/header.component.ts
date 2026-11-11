@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatButton } from '@angular/material/button';
 import { MatToolbar } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  imports: [MatToolbar, MatButton, RouterLink, RouterLinkActive],
+  imports: [MatToolbar, RouterLink, RouterLinkActive],
   selector: 'app-header',
   styleUrl: './header.component.scss',
   templateUrl: './header.component.html',

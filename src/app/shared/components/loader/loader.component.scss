@@ -13,7 +13,15 @@
   }
 }
 
+.track {
+  width: 96px;
+  height: 96px;
+  box-sizing: border-box;
+  border: 4px solid var(--mat-sys-surface-container-high);
+  border-radius: 50%;
+}
+
 .label {
-  font: var(--mat-sys-label-medium);
-  color: var(--mat-sys-on-surface-variant);
+  font: 700 12px / 1 var(--mat-sys-title-medium-font);
+  color: var(--mat-sys-on-surface);
 }

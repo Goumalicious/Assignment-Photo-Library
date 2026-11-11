@@ -17,7 +17,7 @@ export class PhotoCardComponent {
   readonly size = input<'thumbnail' | 'full'>('thumbnail');
 
   protected readonly src = computed(() =>
-    this.size() === 'full' ? this.photo().fullUrl : this.photo().thumbnailUrl
+    this.size() === 'full' ? this.photo().fullUrl : this.photo().thumbnailUrl,
   );
 
   protected readonly status = signal<ImageStatus>('loading');

@@ -25,10 +25,10 @@ export class PhotoDetailComponent {
 
   protected readonly photo = computed(() => this.favorites.getById(this.id()));
 
-  protected remove(photo: Photo): void {
+  protected async remove(photo: Photo): Promise<void> {
+    await this.router.navigate(['/favorites'], { replaceUrl: true }); // So the back button doesn't go back to the removed photo
+
     this.favorites.remove(photo.id);
-    
-    this.router.navigate(['/favorites'], { replaceUrl: true }); // So the back button doesn't go back to the removed photo
 
     const isMobile = this.breakpoints.isMatched(Breakpoints.Handset);
     const snackBarRef = this.snackBar.open('Removed from favorites', 'Undo', {

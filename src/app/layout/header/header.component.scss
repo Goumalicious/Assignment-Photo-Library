@@ -1,17 +1,80 @@
+@use '@angular/material' as mat;
+
 :host {
   position: sticky;
   top: 0;
   z-index: 10;
   display: block;
+
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: rgb(244 248 255 / 0.72),
+    )
+  );
+}
+
+mat-toolbar {
+  justify-content: center;
+  border-bottom: 1px solid rgb(27 27 58 / 0.08);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 
 .nav {
+  --link-width: 120px;
+  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  width: 100%;
+  padding: 5px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgb(27 27 58 / 0.12);
 }
 
-a {
-  min-width: 120px;
+.indicator {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: var(--link-width);
+  height: calc(100% - 10px);
+  border-radius: 999px;
+  background: var(--mat-sys-primary);
+  box-shadow: 0 6px 14px rgb(225 29 72 / 0.3);
+  transition:
+    transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 200ms ease;
+}
+
+.nav:has(.nav-link:nth-of-type(2).active) .indicator {
+  transform: translateX(100%);
+}
+
+.nav:not(:has(.active)) .indicator {
+  opacity: 0;
+}
+
+.nav-link {
+  position: relative;
+  width: var(--link-width);
+  padding: 9px 0;
+  border-radius: 999px;
+  text-align: center;
+  text-decoration: none;
+  font: 700 15px / 1.2 var(--mat-sys-title-medium-font);
+  color: var(--mat-sys-on-surface);
+  transition: color 250ms ease;
+
+  &.active {
+    color: var(--mat-sys-on-primary);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--mat-sys-primary);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator {
+    transition: none;
+  }
 }

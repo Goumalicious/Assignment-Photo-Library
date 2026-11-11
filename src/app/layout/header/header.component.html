@@ -1,11 +1,11 @@
 <mat-toolbar>
   <nav class="nav" aria-label="Main navigation">
+    <span class="indicator" aria-hidden="true"></span>
     @for (link of links; track link.path) {
       <a
-        [matButton]="rla.isActive ? 'filled' : 'outlined'"
+        class="nav-link"
         [routerLink]="link.path"
-        routerLinkActive
-        #rla="routerLinkActive"
+        routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page"
       >
