@@ -14,8 +14,8 @@ Requires Node.js 22.22+, 24.15+ or 26+ (check with `node -v`).
 
 1. Clone the repository and open the folder:
    ```bash
-   git clone https://github.com/Goumalicious/Assignment-XM-Photo-Library.git
-   cd Assignment-XM-Photo-Library
+   git clone https://github.com/Goumalicious/Assignment-Photo-Library.git
+   cd Assignment-Photo-Library
    ```
 2. Install the dependencies:
    ```bash
