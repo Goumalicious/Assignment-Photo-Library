@@ -21,7 +21,7 @@ html {
     (
       primary: #e11d48,
       on-primary: #ffffff,
-      surface: #f4f8ff,
+      surface: #fdf3f0,
       on-surface: #1b1b3a,
       on-surface-variant: #5f6385,
       surface-container-high: #e1e8f5,
@@ -40,11 +40,23 @@ html {
 
 body {
   color-scheme: light;
-  background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
   margin: 0;
   min-height: 100%;
+}
+
+html {
+  background: #fdf3f0;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, #fff1e8 0%, #fdeff5 50%, #f1efff 100%);
 }
 
 ::view-transition-old(root),
