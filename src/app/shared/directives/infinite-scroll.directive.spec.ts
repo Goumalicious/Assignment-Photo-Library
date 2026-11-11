@@ -17,7 +17,7 @@ class FakeIntersectionObserver {
   unobserve(): void {}
   disconnect(): void {}
 
-  /** Simulates the user scrolling the marker into or out of view. */
+  //Simulates the user scrolling the marker into or out of view
   scrollMarker(visible: boolean): void {
     FakeIntersectionObserver.markerVisible = visible;
     this.report();
@@ -70,7 +70,7 @@ describe('InfiniteScrollDirective', () => {
     expect(fixture.componentInstance.loads).toBe(0);
   });
 
-  it('keeps asking while the end is still visible after a load (big screens)', async () => {
+  it('asks again after a load if the end of the list is still in view', async () => {
     FakeIntersectionObserver.markerVisible = true; // the screen is taller than the list
     const fixture = await setup();
     expect(fixture.componentInstance.loads).toBe(1);
@@ -80,7 +80,7 @@ describe('InfiniteScrollDirective', () => {
     await fixture.whenStable();
     fixture.componentInstance.loading.set(false);
     await fixture.whenStable();
-    expect(fixture.componentInstance.loads).toBe(2); // ...so it asks again by itself
+    expect(fixture.componentInstance.loads).toBe(2);
 
     // The next page fills the screen: the marker is pushed out of view, so it stops.
     FakeIntersectionObserver.markerVisible = false;

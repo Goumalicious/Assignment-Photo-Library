@@ -18,7 +18,7 @@ describe('PhotoDetailComponent', () => {
 
   afterEach(() => localStorage.clear());
 
-  /** Opens a URL like the browser would: real routes, with :id passed to the input. */
+  // Opens a URL like the browser would: real routes, with :id passed to the input.
   async function open(url: string) {
     const harness = await RouterTestingHarness.create();
     await harness.navigateByUrl(url, PhotoDetailComponent);

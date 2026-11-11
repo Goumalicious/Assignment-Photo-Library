@@ -12,7 +12,7 @@ describe('PhotoCardComponent', () => {
     return fixture;
   }
 
-  it('shows a fallback instead of a broken image when loading fails', async () => {
+  it('shows a fallback image instead of a broken image when loading fails', async () => {
     const fixture = await setup();
     const host: HTMLElement = fixture.nativeElement;
 
