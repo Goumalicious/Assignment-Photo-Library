@@ -1,1 +1,10 @@
-<p>favorites works!</p>
+@if (favorites().length > 0) {
+  <app-photo-grid [photos]="favorites()" (photoSelected)="openPhoto($event)" />
+} @else {
+  <section class="empty">
+    <mat-icon class="empty-icon">favorite</mat-icon>
+    <h1>No favorites yet</h1>
+    <p>Click any photo in the 'Photos' page to save it here.</p>
+    <a matButton="filled" routerLink="/">Browse photos</a>
+  </section>
+}

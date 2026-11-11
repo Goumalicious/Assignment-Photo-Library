@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Photo } from '../../../core/models/photo';
 
@@ -14,6 +14,11 @@ type ImageStatus = 'loading' | 'loaded' | 'error';
 export class PhotoCardComponent {
   readonly photo = input.required<Photo>();
   readonly favorite = input(false);
+  readonly size = input<'thumbnail' | 'full'>('thumbnail');
+
+  protected readonly src = computed(() =>
+    this.size() === 'full' ? this.photo().fullUrl : this.photo().thumbnailUrl
+  );
 
   protected readonly status = signal<ImageStatus>('loading');
 }

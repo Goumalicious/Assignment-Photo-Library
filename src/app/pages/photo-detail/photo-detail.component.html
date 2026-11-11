@@ -1,1 +1,13 @@
-<p>Photo {{ id() }}</p>
+@if (photo(); as photo) {
+  <section class="detail">
+    <app-photo-card class="photo" [photo]="photo" size="full" />
+    <button matButton="filled" type="button" (click)="remove(photo)">Remove from favorites</button>
+  </section>
+} @else {
+  <section class="not-found">
+    <mat-icon class="not-found-icon">hide_image</mat-icon>
+    <h1>Photo not found</h1>
+    <p>This photo is not in your favorites. It may have been removed.</p>
+    <a matButton="filled" routerLink="/favorites">Back to favorites</a>
+  </section>
+}
