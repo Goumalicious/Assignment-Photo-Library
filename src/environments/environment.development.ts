@@ -2,7 +2,7 @@ export const environment = {
   production: false,
   photosApi: {
     baseUrl: 'https://picsum.photos',
-    pageSize: 12,
+    pageSize: 30,
     latency: { min: 200, max: 300 },
     imageSize: { thumbnail: 400, full: 1200 },
   },
